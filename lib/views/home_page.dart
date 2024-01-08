@@ -23,7 +23,14 @@ class HomePage extends StatelessWidget {
                   Icon(Icons.history),
                 ],
               ),
-            )
+            ),
+            ListView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: 5,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index){
+                return Text("data");
+              })
           ],
         ),
       ),
