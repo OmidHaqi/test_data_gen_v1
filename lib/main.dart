@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_data_gen/views/home_page.dart';
 import 'package:test_data_gen/views/my_splash.dart';
 
 void main() {
@@ -10,8 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MySplash(),
+    return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
