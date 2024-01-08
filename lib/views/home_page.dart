@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_data_gen/views/res/paths.dart';
 import 'package:test_data_gen/views/res/strings.dart';
 
 class HomePage extends StatelessWidget {
@@ -24,13 +25,31 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            ListView.builder(
-              physics: BouncingScrollPhysics(),
-              itemCount: 5,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index){
-                return Text("data");
-              })
+            SizedBox(
+              height: 500,
+              child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      height: 260,
+                      width: 300,
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 250,
+                            width: 400,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(fit: BoxFit.cover,
+                                image: AssetImage(Paths.imgGrayWolfAlgorithm))
+                            ),
+
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+            )
           ],
         ),
       ),
