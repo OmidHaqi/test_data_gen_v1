@@ -24,69 +24,81 @@ class HomePage extends StatelessWidget {
                   )),
                   Padding(
                     padding: EdgeInsets.only(right: sizeW / 78.6),
-                    child: Icon(Icons.info_outline,size: 30,),
+                    child: Icon(
+                      Icons.info_outline,
+                      size: 30,
+                    ),
                   ),
-                  Icon(Icons.history,size: 37,),
+                  Icon(
+                    Icons.history,
+                    size: 37,
+                  ),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: SizedBox(
-                height: 750,
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  itemCount: 2,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                          //set border radius more than 50% of height and width to make circle
-                        ),
-                        color: Color.fromARGB(255, 203, 238, 221),
-                        elevation: 4,
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 500,
-                              height: 220,
-                              decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                  image: DecorationImage(
-                                      image: AssetImage(
-                                        Paths.imgDNAalgorithm,
-                                      ),
-                                      fit: BoxFit.cover)),
-                            ),
-                            const Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(10, 8, 10, 4),
-                                child: Text(
-                                  'genetic algorithm',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 24),
+              child: SingleChildScrollView(
+                child: SizedBox(
+                  height: sizeH / 1.254786451,
+                  width: sizeW / 1.113314448,
+                  child: ListView.builder(
+                    physics: BouncingScrollPhysics(),
+                    itemCount: 2,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: sizeH / 85.2),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            //set border radius more than 50% of height and width to make circle
+                          ),
+                          color: Color.fromARGB(255, 203, 238, 221),
+                          elevation: 4,
+                          child: Column(
+                            children: [
+                              Container(
+                                width: sizeW / 1.113314448,
+                                height: sizeH / 3.042857143,
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                          Paths.imgDNAalgorithm,
+                                        ),
+                                        fit: BoxFit.cover)),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(sizeW / 39.3,
+                                      sizeH / 106.5, sizeW / 39.3, sizeH / 213),
+                                  child: Text(
+                                    'genetic algorithm',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 24),
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Align(
-                              alignment: Alignment.centerLeft,
-                              child: Padding(
-                                padding: EdgeInsets.fromLTRB(10, 4, 10, 10),
-                                child: Text(
-                                    'a method for solving both constrained and unconstrained optimization problems based on a natural selection process that mimics biological evolution',
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w300)),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Padding(
+                                  padding: EdgeInsets.fromLTRB(sizeW / 39.3,
+                                      sizeH / 213, sizeW / 39.3, sizeH / 85.2),
+                                  child: Text(
+                                      'a method for solving both constrained and unconstrained optimization problems based on a natural selection process that mimics biological evolution',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w300)),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             )
