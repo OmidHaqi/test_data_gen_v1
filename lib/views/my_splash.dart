@@ -40,7 +40,7 @@ class _MySplashState extends State<MySplash> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Image.asset(Paths.imgSplash,height: 330,width: 330,),
-                  Text(Strings.splash)
+                  Text(Strings.splash, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
                 ],
               ),
 
