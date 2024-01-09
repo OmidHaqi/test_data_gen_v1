@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:test_data_gen/views/my_splash.dart';
 
 void main() {
@@ -10,8 +11,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Color.fromARGB(255, 204, 238, 221),
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Color.fromARGB(255, 204, 238, 221),
+        systemNavigationBarIconBrightness: Brightness.dark,
+      ),
+    );
     return  MaterialApp(
       theme: ThemeData(
+       
         fontFamily: 'Ubuntu'
       ),
       debugShowCheckedModeBanner: false,
