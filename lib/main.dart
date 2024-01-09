@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:test_data_gen/views/home_page.dart';
 import 'package:test_data_gen/views/my_splash.dart';
 
 void main() {
