@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:test_data_gen/views/res/strings.dart';
 
 class InputCondition extends StatefulWidget {
   @override
@@ -7,61 +6,78 @@ class InputCondition extends StatefulWidget {
 }
 
 class _InputConditionState extends State<InputCondition> {
-  List filds = [TextFormField(
-    decoration: const InputDecoration(
+  List filds = [
+    TextFormField(
+        decoration: const InputDecoration(
       labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
       labelText: 'conditions',
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Color.fromARGB(255, 68, 164, 126),width: 2),
+        borderSide:
+            BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(width: 2,color: Color.fromARGB(255, 207, 233, 217))
-    ),)
-  ),TextFormField(
-    decoration: const InputDecoration(
+          borderSide:
+              BorderSide(width: 2, color: Color.fromARGB(255, 207, 233, 217))),
+    )),
+    TextFormField(
+        decoration: const InputDecoration(
       labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
       labelText: 'conditions',
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Color.fromARGB(255, 68, 164, 126),width: 2),
+        borderSide:
+            BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
       ),
       border: OutlineInputBorder(
-        borderSide: BorderSide(width: 2,color: Color.fromARGB(255, 207, 233, 217))
-    ),)
-  ),];
+          borderSide:
+              BorderSide(width: 2, color: Color.fromARGB(255, 207, 233, 217))),
+    )),
+  ];
   @override
   Widget build(BuildContext context) {
     double sizeH = MediaQuery.of(context).size.height;
     double sizeW = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 204, 238, 221),
+        backgroundColor: Color.fromARGB(255, 235, 246, 240),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
-                padding:  EdgeInsets.fromLTRB(sizeW/19.65, sizeH/13.3125, 0, 0),
+                padding:
+                    EdgeInsets.fromLTRB(sizeW / 19.65, sizeH / 13.3125, 0, 0),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                        'input',
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                      ),
+                    'input',
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    sizeW / 19.65, sizeH /25.058823529, sizeW / 19.65, 0),
+                    sizeW / 19.65, sizeH / 110.058823529, sizeW / 19.65, 0),
                 child: Container(
+                  constraints: BoxConstraints(
+                    minHeight:100 ,
+                    minWidth: double.infinity,
+                    maxHeight: 330,
+                    
+                  ),
+                  
                   padding: EdgeInsets.only(top: 10),
-                  height: sizeH / 3,
-                  width: sizeW / 1.113314448,
-                  child: ListView(
-                    children: filds
-                        .map((textFormField) => Container(
-                              padding: EdgeInsets.only(bottom: 10, top: 5),
-                              child: textFormField,
-                            ))
-                        .toList(),
+                  // height: sizeH/3,
+                  // width: sizeW / 1.113314448,
+
+                  child: Expanded(
+                    child: ListView(
+                       shrinkWrap: true,
+                      children: filds
+                          .map((textFormField) => Container(
+                                padding: EdgeInsets.only(bottom: 10, top: 5),
+                                child: textFormField,
+                              ))
+                          .toList(),
+                    ),
                   ),
                 ),
               ),
@@ -139,14 +155,15 @@ class _InputConditionState extends State<InputCondition> {
   }
 
   TextFormField field = TextFormField(
-    decoration: const InputDecoration(
-      labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
-      labelText: 'conditions',
-      focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Color.fromARGB(255, 68, 164, 126),width: 2),
-      ),
-      border: OutlineInputBorder(
-        borderSide: BorderSide(width: 2,color: Color.fromARGB(255, 207, 233, 217))
-    ),)
-  );
+      decoration: const InputDecoration(
+    labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
+    labelText: 'conditions',
+    focusedBorder: OutlineInputBorder(
+      borderSide:
+          BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
+    ),
+    border: OutlineInputBorder(
+        borderSide:
+            BorderSide(width: 2, color: Color.fromARGB(255, 207, 233, 217))),
+  ));
 }
