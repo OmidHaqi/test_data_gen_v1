@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test_data_gen/views/inputCondition.dart';
 import 'package:test_data_gen/views/res/paths.dart';
 import 'package:test_data_gen/views/res/strings.dart';
 
@@ -36,18 +38,24 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: SingleChildScrollView(
-                child: SizedBox(
-                  height: sizeH / 1.254786451,
-                  width: sizeW / 1.113314448,
-                  child: ListView.builder(
-                    physics: BouncingScrollPhysics(),
-                    itemCount: 2,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(top: sizeH / 85.2),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(top: sizeH / 85.2),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => InputCondition(),
+                            ),
+                          );
+                        },
                         child: Card(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -58,8 +66,7 @@ class HomePage extends StatelessWidget {
                           child: Column(
                             children: [
                               Container(
-                                width: sizeW / 1.113314448,
-                                height: sizeH / 3.042857143,
+                                height: sizeH / 4.042857143,
                                 decoration: const BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20)),
@@ -96,9 +103,9 @@ class HomePage extends StatelessWidget {
                             ],
                           ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             )
