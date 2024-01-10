@@ -88,12 +88,15 @@ class _InputConditionState extends State<InputCondition> {
                       EdgeInsets.fromLTRB(sizeW / 19.65, sizeH / 35.5, 0, 0),
                   child: TextButton(
                     onPressed: () {},
-                    child: Text(
-                      "Solve",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                    child: Padding(
+                      padding:  EdgeInsets.fromLTRB(sizeW/17, sizeH/200, sizeW/17, sizeH/200),
+                      child: Text(
+                        "Solve",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     style: ButtonStyle(
                         elevation: MaterialStateProperty.all(5),
