@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
                   sizeW / 19.65, sizeH / 25, sizeW / 19.65, 0),
               child: Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                       child: Text(
                     Strings.chooseAlgorithm,
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                       padding: EdgeInsets.only(top: sizeH / 85.2),
                       child: InkWell(
                         onTap: () {
-                          Navigator.pushReplacement(
+                          Navigator.push(
                             context,
                             CupertinoPageRoute(
                               builder: (context) => InputCondition(),
