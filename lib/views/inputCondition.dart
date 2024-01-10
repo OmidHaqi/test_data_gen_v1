@@ -6,32 +6,50 @@ class InputCondition extends StatefulWidget {
 }
 
 class _InputConditionState extends State<InputCondition> {
-  List filds = [
-    TextFormField(
-        decoration: const InputDecoration(
-      labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
-      labelText: 'conditions',
-      focusedBorder: OutlineInputBorder(
-        borderSide:
-            BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
-      ),
-      border: OutlineInputBorder(
-          borderSide:
-              BorderSide(width: 2, color: Color.fromARGB(255, 207, 233, 217))),
-    )),
-    TextFormField(
-        decoration: const InputDecoration(
-      labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
-      labelText: 'conditions',
-      focusedBorder: OutlineInputBorder(
-        borderSide:
-            BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
-      ),
-      border: OutlineInputBorder(
-          borderSide:
-              BorderSide(width: 2, color: Color.fromARGB(255, 207, 233, 217))),
-    )),
+  static List<TextEditingController> controllers = [
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
   ];
+  static List<String> expressions = [];
+  List<TextFormField> fields = [
+    TextFormField(
+      controller: TextEditingController(),
+      decoration: const InputDecoration(
+        labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
+        labelText: 'conditions',
+        focusedBorder: OutlineInputBorder(
+          borderSide:
+              BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
+        ),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(
+                width: 2, color: Color.fromARGB(255, 207, 233, 217))),
+      ),
+    ),
+    TextFormField(
+      controller: TextEditingController(),
+      decoration: const InputDecoration(
+        labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
+        labelText: 'conditions',
+        focusedBorder: OutlineInputBorder(
+          borderSide:
+              BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
+        ),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(
+                width: 2, color: Color.fromARGB(255, 207, 233, 217))),
+      ),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     double sizeH = MediaQuery.of(context).size.height;
@@ -45,7 +63,7 @@ class _InputConditionState extends State<InputCondition> {
               Padding(
                 padding:
                     EdgeInsets.fromLTRB(sizeW / 19.65, sizeH / 13.3125, 0, 0),
-                child: Align(
+                child: const Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'input',
@@ -55,7 +73,7 @@ class _InputConditionState extends State<InputCondition> {
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(
-                    sizeW / 19.65, sizeH / 110.058823529, sizeW / 19.65, 0),
+                    sizeW / 19.65, sizeH / 25.058823529, sizeW / 19.65, 0),
                 child: Container(
                   constraints: BoxConstraints(
                     minHeight:100 ,
@@ -65,19 +83,15 @@ class _InputConditionState extends State<InputCondition> {
                   ),
                   
                   padding: EdgeInsets.only(top: 10),
-                  // height: sizeH/3,
-                  // width: sizeW / 1.113314448,
-
-                  child: Expanded(
-                    child: ListView(
-                       shrinkWrap: true,
-                      children: filds
-                          .map((textFormField) => Container(
-                                padding: EdgeInsets.only(bottom: 10, top: 5),
-                                child: textFormField,
-                              ))
-                          .toList(),
-                    ),
+                  height: sizeH / 3,
+                  width: sizeW / 1.113314448,
+                  child: ListView(
+                    children: fields
+                        .map((textFormField) => Container(
+                              padding: EdgeInsets.only(bottom: 10, top: 5),
+                              child: textFormField,
+                            ))
+                        .toList(),
                   ),
                 ),
               ),
@@ -87,16 +101,19 @@ class _InputConditionState extends State<InputCondition> {
                   padding:
                       EdgeInsets.fromLTRB(sizeW / 19.65, sizeH / 35.5, 0, 0),
                   child: TextButton(
-                    onPressed: () {},
-                    child: Padding(
-                      padding:  EdgeInsets.fromLTRB(sizeW/17, sizeH/200, sizeW/17, sizeH/200),
-                      child: Text(
-                        "Solve",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold),
-                      ),
+                    onPressed: () {
+                      expressions.clear();
+                      for (var i = 0; i < fields.length; i++) {
+                        expressions.add("${fields[i].controller!.text}");
+                      }
+                      print(expressions);
+                    },
+                    child: Text(
+                      "Solve",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
                     ),
                     style: ButtonStyle(
                         elevation: MaterialStateProperty.all(5),
@@ -143,7 +160,8 @@ class _InputConditionState extends State<InputCondition> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              filds.add(field);
+              fields.add(field);
+              controllers.add(TextEditingController());
             });
           },
           backgroundColor: Color.fromARGB(255, 68, 164, 126),
@@ -157,16 +175,18 @@ class _InputConditionState extends State<InputCondition> {
     );
   }
 
-  TextFormField field = TextFormField(
+  TextFormField field =     TextFormField(
+      controller: TextEditingController(),
       decoration: const InputDecoration(
-    labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
-    labelText: 'conditions',
-    focusedBorder: OutlineInputBorder(
-      borderSide:
-          BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
-    ),
-    border: OutlineInputBorder(
-        borderSide:
-            BorderSide(width: 2, color: Color.fromARGB(255, 207, 233, 217))),
-  ));
+        labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
+        labelText: 'conditions',
+        focusedBorder: OutlineInputBorder(
+          borderSide:
+              BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
+        ),
+        border: OutlineInputBorder(
+            borderSide: BorderSide(
+                width: 2, color: Color.fromARGB(255, 207, 233, 217))),
+      ),
+    );
 }
