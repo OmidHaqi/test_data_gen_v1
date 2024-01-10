@@ -21,13 +21,13 @@ class _OutPutPageState extends State<OutPutPage> {
               alignment: Alignment.centerLeft,
               child: Text(
                 'result',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),
           Container(
             width: sizeW / 0.9825,
-            height: sizeH / 2.13,
+            height: sizeH / 2.5,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 image: DecorationImage(
@@ -42,9 +42,9 @@ class _OutPutPageState extends State<OutPutPage> {
               padding: EdgeInsets.fromLTRB(
                   sizeW / 6.894736842, sizeH / 18.52173913, 0, 0),
               child: Container(
-                width: sizeW / 2.358974,
-                height: sizeH / 3.8,
-                color: Colors.greenAccent,
+                width: sizeW / 3,
+                height: sizeH / 4,
+             
                 child: Column(
                   children: [
                     Padding(
@@ -55,7 +55,7 @@ class _OutPutPageState extends State<OutPutPage> {
                           Text(
                             "X:",
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             width: 5,
@@ -75,7 +75,7 @@ class _OutPutPageState extends State<OutPutPage> {
                           Text(
                             "Y:",
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             width: 5,
@@ -95,7 +95,7 @@ class _OutPutPageState extends State<OutPutPage> {
                           Text(
                             "Z:",
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             width: 5,
@@ -115,7 +115,7 @@ class _OutPutPageState extends State<OutPutPage> {
                           Text(
                             "ANAR:",
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             width: 5,
@@ -135,7 +135,7 @@ class _OutPutPageState extends State<OutPutPage> {
                           Text(
                             "TIME:",
                             style: TextStyle(
-                                fontSize: 24, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
                             width: 5,
@@ -147,12 +147,42 @@ class _OutPutPageState extends State<OutPutPage> {
                           SizedBox(
                             width: 5,
                           ),
-                          Text("s",style: TextStyle(fontSize: 23,fontWeight: FontWeight.w600)),
+                          Text("s",
+                              style: TextStyle(
+                                  fontSize: 23, fontWeight: FontWeight.w600)),
                         ],
                       ),
                     ),
                   ],
                 ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding:  EdgeInsets.fromLTRB(0, sizeH/17.04, sizeW/10.9166, 0),
+              child: TextButton(
+                onPressed: () {},
+                child: Padding(
+                  padding:  EdgeInsets.fromLTRB(sizeW/17, sizeH/200, sizeW/17, sizeH/200),
+                  child: Text(
+                    "Share",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(5),
+                    shadowColor: MaterialStateProperty.all(Colors.black),
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9)),
+                    ),
+                    backgroundColor: MaterialStatePropertyAll(
+                        Color.fromARGB(255, 95, 192, 146))),
               ),
             ),
           ),
