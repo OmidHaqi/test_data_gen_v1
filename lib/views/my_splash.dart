@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:test_data_gen/views/home_page.dart';
 import 'package:test_data_gen/views/inputCondition.dart';
+import 'package:test_data_gen/views/outputPage.dart';
 import 'package:test_data_gen/views/res/paths.dart';
 import 'package:test_data_gen/views/res/strings.dart';
 
@@ -24,7 +25,7 @@ class _MySplashState extends State<MySplash> {
       () => Navigator.pushReplacement(
         context,
         CupertinoPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => OutPutPage(),
         ),
       ),
     );
