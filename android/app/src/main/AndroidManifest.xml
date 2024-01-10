@@ -28,7 +28,6 @@
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
 
-        <uses-permission android:name="android.permission.INTERNET" />
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
