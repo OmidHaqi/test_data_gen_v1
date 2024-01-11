@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:test_data_gen/views/OutPutPageTwo.dart';
-import 'package:test_data_gen/views/home_page.dart';
-import 'package:test_data_gen/views/inputCondition.dart';
-import 'package:test_data_gen/views/outputPage.dart';
+
+
+import 'package:test_data_gen/views/appInfo.dart';
+
 import 'package:test_data_gen/views/res/paths.dart';
 import 'package:test_data_gen/views/res/strings.dart';
 
@@ -26,7 +26,7 @@ class _MySplashState extends State<MySplash> {
       () => Navigator.pushReplacement(
         context,
         CupertinoPageRoute(
-          builder: (context) => OutPutPageTwo(),
+          builder: (context) => AppInfoPage(),
         ),
       ),
     );
@@ -44,11 +44,16 @@ class _MySplashState extends State<MySplash> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(Paths.imgSplash,height: 330,width: 330,),
-                  Text(Strings.splash, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+                  Image.asset(
+                    Paths.imgSplash,
+                    height: 330,
+                    width: 330,
+                  ),
+                  Text(Strings.splash,
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
                 ],
               ),
-
               Padding(
                 padding: const EdgeInsets.only(top: 100),
                 child: SpinKitRing(
