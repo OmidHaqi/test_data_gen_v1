@@ -1,54 +1,31 @@
 import 'package:flutter/material.dart';
 
 class InputCondition extends StatefulWidget {
+  const InputCondition({super.key});
+
   @override
   State<InputCondition> createState() => _InputConditionState();
 }
 
 class _InputConditionState extends State<InputCondition> {
-  static List<TextEditingController> controllers = [
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-    TextEditingController(),
-  ];
   static List<String> expressions = [];
-  List<TextFormField> fields = [
-    TextFormField(
-      controller: TextEditingController(),
-      decoration: const InputDecoration(
-        labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
-        labelText: 'conditions',
-        focusedBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
-        ),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(
-                width: 2, color: Color.fromARGB(255, 207, 233, 217))),
-      ),
-    ),
-    TextFormField(
-      controller: TextEditingController(),
-      decoration: const InputDecoration(
-        labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
-        labelText: 'conditions',
-        focusedBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
-        ),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(
-                width: 2, color: Color.fromARGB(255, 207, 233, 217))),
-      ),
-    ),
+
+  List<TextEditingController> controllers = [
+    TextEditingController(),
+    TextEditingController(),
   ];
+
+  void addTextField() {
+    controllers.add(TextEditingController());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < controllers.length; i++) {
+      controllers[i] = TextEditingController();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +33,7 @@ class _InputConditionState extends State<InputCondition> {
     double sizeW = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromARGB(255, 235, 246, 240),
+        backgroundColor: const Color.fromARGB(255, 235, 246, 240),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -76,22 +53,39 @@ class _InputConditionState extends State<InputCondition> {
                     sizeW / 19.65, sizeH / 25.058823529, sizeW / 19.65, 0),
                 child: Container(
                   constraints: const BoxConstraints(
-                    minHeight:100 ,
+                    minHeight: 100,
                     minWidth: double.infinity,
                     maxHeight: 330,
-                    
+                    maxWidth: double.infinity
                   ),
-                  
-                  padding: EdgeInsets.only(top: 10),
-                  height: sizeH / 3,
-                  width: sizeW / 1.113314448,
+                  padding: const EdgeInsets.only(top: 10),
                   child: ListView(
-                    children: fields
-                        .map((textFormField) => Container(
-                              padding: EdgeInsets.only(bottom: 10, top: 5),
-                              child: textFormField,
-                            ))
-                        .toList(),
+                    shrinkWrap: true,
+                    children: [
+                      for (int i = 0; i < controllers.length; i++)
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextFormField(
+                            
+                            controller: controllers[i],
+                            decoration: const InputDecoration(
+                              
+                              labelStyle: TextStyle(
+                                  color: Color.fromARGB(255, 68, 164, 126)),
+                              labelText: 'conditions',
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color.fromARGB(255, 68, 164, 126),
+                                    width: 2),
+                              ),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromARGB(255, 207, 233, 217))),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
               ),
@@ -103,18 +97,11 @@ class _InputConditionState extends State<InputCondition> {
                   child: TextButton(
                     onPressed: () {
                       expressions.clear();
-                      for (var i = 0; i < fields.length; i++) {
-                        expressions.add("${fields[i].controller!.text}");
+                      for (var i = 0; i < controllers.length; i++) {
+                        expressions.add(controllers[i].text);
                       }
                       print(expressions);
                     },
-                    child: Text(
-                      "Solve",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
                     style: ButtonStyle(
                         elevation: MaterialStateProperty.all(5),
                         shadowColor: MaterialStateProperty.all(Colors.black),
@@ -122,8 +109,15 @@ class _InputConditionState extends State<InputCondition> {
                           RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(9)),
                         ),
-                        backgroundColor: MaterialStatePropertyAll(
+                        backgroundColor: const MaterialStatePropertyAll(
                             Color.fromARGB(255, 95, 192, 146))),
+                    child: const Text(
+                      "Solve",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
@@ -135,7 +129,7 @@ class _InputConditionState extends State<InputCondition> {
                   height: sizeH / 4,
                   child: Column(
                     children: [
-                      Align(
+                      const Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
                             "genetic algorithm",
@@ -145,7 +139,7 @@ class _InputConditionState extends State<InputCondition> {
                       SizedBox(
                         height: sizeH / 56.8,
                       ),
-                      Text(
+                      const Text(
                         "Genetic algorithm is a computational technique that simulates the process of natural selection to solve complex problems. It has been widely applied in various fields, including software engineering. One of its applications in software engineering is test data generation.",
                         style: TextStyle(
                             fontWeight: FontWeight.w400, height: 1.75),
@@ -160,13 +154,12 @@ class _InputConditionState extends State<InputCondition> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             setState(() {
-              fields.add(field);
-              controllers.add(TextEditingController());
+              addTextField();
             });
           },
-          backgroundColor: Color.fromARGB(255, 68, 164, 126),
+          backgroundColor: const Color.fromARGB(255, 68, 164, 126),
           tooltip: 'Add Text Field',
-          child: Icon(
+          child: const Icon(
             Icons.add,
             color: Colors.white,
           ),
@@ -175,18 +168,4 @@ class _InputConditionState extends State<InputCondition> {
     );
   }
 
-  TextFormField field =     TextFormField(
-      controller: TextEditingController(),
-      decoration: const InputDecoration(
-        labelStyle: TextStyle(color: Color.fromARGB(255, 68, 164, 126)),
-        labelText: 'conditions',
-        focusedBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: Color.fromARGB(255, 68, 164, 126), width: 2),
-        ),
-        border: OutlineInputBorder(
-            borderSide: BorderSide(
-                width: 2, color: Color.fromARGB(255, 207, 233, 217))),
-      ),
-    );
 }

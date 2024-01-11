@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_data_gen/views/inputCondition.dart';
+import 'package:test_data_gen/views/input_condition.dart';
 import 'package:test_data_gen/views/res/paths.dart';
 import 'package:test_data_gen/views/res/strings.dart';
 
