@@ -3,17 +3,9 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-<<<<<<< HEAD
-
-
-import 'package:test_data_gen/views/appInfo.dart';
-
-=======
-import 'package:test_data_gen/views/OutPutPageTwo.dart';
 import 'package:test_data_gen/views/home_page.dart';
-import 'package:test_data_gen/views/input_condition.dart';
-import 'package:test_data_gen/views/outputPage.dart';
->>>>>>> f4cb5d5 (fixSomeBugs)
+
+
 import 'package:test_data_gen/views/res/paths.dart';
 import 'package:test_data_gen/views/res/strings.dart';
 
