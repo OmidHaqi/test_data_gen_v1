@@ -75,7 +75,7 @@ class _InputConditionState extends State<InputCondition> {
                 padding: EdgeInsets.fromLTRB(
                     sizeW / 19.65, sizeH / 25.058823529, sizeW / 19.65, 0),
                 child: Container(
-                  constraints: BoxConstraints(
+                  constraints: const BoxConstraints(
                     minHeight:100 ,
                     minWidth: double.infinity,
                     maxHeight: 330,
