@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 
-
 // ignore: must_be_immutable
 class InputCondition extends StatefulWidget {
   InputCondition({super.key, required this.slug});
+
   String slug;
 
   @override
@@ -18,28 +18,38 @@ class _InputConditionState extends State<InputCondition> {
   static List<String> expressions = [];
   String data = expressions.join(',');
 
- 
-  void postMethod() async {
+  void getMethod() async {
     String token = "8df9b75e-44ba-4f0e-bc91-74077f24e53f/";
 
     String data = json.encode({"user_entry_list": expressions});
 
-    Map<String, String> headers = {"Authorization": "Bearer ${token}"};
+    Map<String, String> headers = {"Authorization": "Bearer $token"};
 
-    headers["algorithm_name"] = "genetic";
+    headers["algorithm_name"] = "z-3";
 
-    http.Response response = await http.post(
-      Uri.parse("https://pytestdatagenerator.pythonanywhere.com/solve/"),
+    String apiUrl =
+        "https://pytestdatagenerator.pythonanywhere.com/solve/$token";
+
+    Uri finalUrl = Uri.parse(apiUrl).replace(queryParameters: {
+      "algorithm_name": "z-3",
+      "user_entry_list": json.encode(expressions),
+    });
+
+    http.Response response = await http.get(
+      finalUrl,
       headers: headers,
-      body: data,
     );
 
     if (response.statusCode == 200) {
-      List<String> results = json.decode(response.body)["user_entry_list"];
+      Map<String, dynamic> responseBody = json.decode(response.body);
 
-      print(results);
+      Map<String, dynamic> result = responseBody["result"];
+
+      result.forEach((key, value) {
+        print("Results: $key=$value");
+      });
     } else {
-      print(response.statusCode);
+      print("Error: ${response.statusCode}");
     }
   }
 
@@ -127,8 +137,7 @@ class _InputConditionState extends State<InputCondition> {
 
                       print(expressions);
 
-                      
-                      postMethod();
+                      getMethod();
                     },
                     child: const Text(
                       "Solve",
