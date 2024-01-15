@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:test_data_gen/views/res/paths.dart';
 import 'package:test_data_gen/views/res/strings.dart';
-import 'package:test_data_gen/views/res/widgets.dart';
 
 class AppInfoPage extends StatelessWidget {
+  const AppInfoPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     String textInfo =
@@ -32,14 +32,13 @@ class AppInfoPage extends StatelessWidget {
                           fit: BoxFit.cover)),
                 ),
               ),
-              Text(
+              const Text(
                 Strings.splash,
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 15),
-                child: Text("""TDG Version : 1.0.0
-TDG Core Version : 1.0.0""",textAlign: TextAlign.center,),
+              const Padding(
+                padding: EdgeInsets.only(top: 15),
+                child: Text("TDG Version : 1.0.0 \n TDG Core Version : 1.0.0",textAlign: TextAlign.center,),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
@@ -59,7 +58,7 @@ TDG Core Version : 1.0.0""",textAlign: TextAlign.center,),
                         return Padding(
                           padding: EdgeInsets.only(
                               bottom: MediaQuery.of(context).viewInsets.bottom),
-                          child: Container(
+                          child: SizedBox(
                             height: 500,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(10, 1, 10, 0),
@@ -96,7 +95,7 @@ TDG Core Version : 1.0.0""",textAlign: TextAlign.center,),
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 400,
                                           height: 480,
                                           child: SingleChildScrollView(
@@ -109,7 +108,7 @@ TDG Core Version : 1.0.0""",textAlign: TextAlign.center,),
                                                     textInfo,
                                                     textAlign:
                                                         TextAlign.justify,
-                                                    style: TextStyle(),
+                                                    style: const TextStyle(),
                                                   
                                                   ),
                                                 )
@@ -128,24 +127,24 @@ TDG Core Version : 1.0.0""",textAlign: TextAlign.center,),
                       },
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     "TDG Info",
                     style: TextStyle(
-                        color: Color.fromARGB(255, 3, 109, 94),
+                     
                         fontWeight: FontWeight.bold,
                         fontSize: 17),
                   ),
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: Align(alignment: Alignment.bottomCenter,
                   child: Text(
-                    "Made with 💚by U.D",
+                    "Made with 💚 by U.D",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
-              SizedBox(height: 20,),
+              const SizedBox(height: 20,),
             ],
           ),
         ),
@@ -154,34 +153,3 @@ TDG Core Version : 1.0.0""",textAlign: TextAlign.center,),
   }
 }
 
-
-
-
-//             Container(
-//                 width: sizeW / 1.107042254,
-//                 height: sizeH / 1.549090909,
-                
-//                 child: SingleChildScrollView(
-//                   child: Column(
-//                     children: [
-//                       Text(
-//                         """Effortlessly Generate Realistic and Comprehensive Test Data
-// Streamline your software testing process with our powerful test data generation app, designed to save you time, effort, and ensure comprehensive testing coverage. Our user-friendly interface and extensive customization options empower you to generate realistic and relevant data for a wide range of applications and data types.
-// Unleash the Power of Automation
-// Automate the tedious task of manually creating test data and focus on more critical aspects of software development. Our app efficiently generates data based on your specific requirements, eliminating the need for manual data entry and reducing the risk of errors.
-// Enhance Quality Assurance
-// Ensure the robustness and reliability of your applications by employing realistic and comprehensive test data. Our app provides a plethora of options to customize data generation, allowing you to replicate real-world scenarios and identify potential issues early on.
-// Boost Productivity and Reduce Costs
-// Embrace the efficiency of our test data generation app and significantly reduce the time spent on data preparation. By automating this process, you can allocate more resources to core development tasks, leading to increased productivity and reduced costs associated with software defects.
-// Features at a Glance:
-// Extensive data type support: Generate test data for a wide range of data types, including text, numbers, dates, images, and more.
-// Customizable generation parameters: Specify the exact format, ranges, and distribution of your generated data to match your testing needs.
-// Diverse data formats: Export generated test data in various formats, including CSV, JSON, SQL, and Excel.
-// Integration with testing tools: Seamlessly integrate our app with your existing testing tools for a streamlined testing workflow.
-// Embark on a Journey of Efficient Testing
-// Download our test data generation app today and experience the transformative power of automation and data-driven testing. Eliminate time-consuming manual tasks, enhance quality assurance, and boost productivity while reducing costs. Let our app empower you to deliver exceptional software that meets the highest standards of quality.""",
-//                         style: TextStyle(fontSize: 18),
-//                       ),
-//                     ],
-//                   ),
-//                 ),),

@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_spinkit: ^5.2.0
   adaptive_theme: ^3.5.0
+  connectivity_plus: ^5.0.2
+  dio: ^5.4.0
+  http: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
+import 'package:http/http.dart' as http;
+
+
+// ignore: must_be_immutable
 class InputCondition extends StatefulWidget {
-  const InputCondition({super.key});
+  InputCondition({super.key, required this.slug});
+  String slug;
 
   @override
   State<InputCondition> createState() => _InputConditionState();
@@ -9,13 +16,39 @@ class InputCondition extends StatefulWidget {
 
 class _InputConditionState extends State<InputCondition> {
   static List<String> expressions = [];
+  String data = expressions.join(',');
+
+ 
+  void postMethod() async {
+    String token = "8df9b75e-44ba-4f0e-bc91-74077f24e53f/";
+
+    String data = json.encode({"user_entry_list": expressions});
+
+    Map<String, String> headers = {"Authorization": "Bearer ${token}"};
+
+    headers["algorithm_name"] = "genetic";
+
+    http.Response response = await http.post(
+      Uri.parse("https://pytestdatagenerator.pythonanywhere.com/solve/"),
+      headers: headers,
+      body: data,
+    );
+
+    if (response.statusCode == 200) {
+      List<String> results = json.decode(response.body)["user_entry_list"];
+
+      print(results);
+    } else {
+      print(response.statusCode);
+    }
+  }
 
   List<TextEditingController> controllers = [
     TextEditingController(),
     TextEditingController(),
   ];
 
-  void addTextField() {
+  addTextField() {
     controllers.add(TextEditingController());
   }
 
@@ -33,7 +66,6 @@ class _InputConditionState extends State<InputCondition> {
     double sizeW = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: const Color.fromARGB(255, 235, 246, 240),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -51,14 +83,14 @@ class _InputConditionState extends State<InputCondition> {
               Padding(
                 padding: EdgeInsets.fromLTRB(
                     sizeW / 19.65, sizeH / 25.058823529, sizeW / 19.65, 0),
-                child: Container(
+                child: AnimatedContainer(
                   constraints: const BoxConstraints(
-                    minHeight: 100,
-                    minWidth: double.infinity,
-                    maxHeight: 330,
-                    maxWidth: double.infinity
-                  ),
+                      minHeight: 100,
+                      minWidth: double.infinity,
+                      maxHeight: 330,
+                      maxWidth: double.infinity),
                   padding: const EdgeInsets.only(top: 10),
+                  duration: const Duration(minutes: 1),
                   child: ListView(
                     shrinkWrap: true,
                     children: [
@@ -66,22 +98,14 @@ class _InputConditionState extends State<InputCondition> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
-                            
+                            maxLength: 4,
                             controller: controllers[i],
                             decoration: const InputDecoration(
-                              
-                              labelStyle: TextStyle(
-                                  color: Color.fromARGB(255, 68, 164, 126)),
-                              labelText: 'conditions',
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color.fromARGB(255, 68, 164, 126),
-                                    width: 2),
+                              prefixIcon: Icon(Icons.code_rounded),
+                              suffixIcon: Icon(
+                                Icons.delete_forever,
                               ),
-                              border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      width: 2,
-                                      color: Color.fromARGB(255, 207, 233, 217))),
+                              label: Text("conditions"),
                             ),
                           ),
                         ),
@@ -100,23 +124,19 @@ class _InputConditionState extends State<InputCondition> {
                       for (var i = 0; i < controllers.length; i++) {
                         expressions.add(controllers[i].text);
                       }
+
                       print(expressions);
+
+                      
+                      postMethod();
                     },
-                    style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(5),
-                        shadowColor: MaterialStateProperty.all(Colors.black),
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(9)),
-                        ),
-                        backgroundColor: const MaterialStatePropertyAll(
-                            Color.fromARGB(255, 95, 192, 146))),
                     child: const Text(
                       "Solve",
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                        color: Color(
+                          0xFF1b211d,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -157,15 +177,15 @@ class _InputConditionState extends State<InputCondition> {
               addTextField();
             });
           },
-          backgroundColor: const Color.fromARGB(255, 68, 164, 126),
           tooltip: 'Add Text Field',
           child: const Icon(
             Icons.add,
-            color: Colors.white,
+            color: Color(
+              0xFF1b211d,
+            ),
           ),
         ),
       ),
     );
   }
-
 }
