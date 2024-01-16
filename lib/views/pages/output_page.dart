@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:test_data_gen/views/pages/home_page.dart';
 import 'package:test_data_gen/views/res/paths.dart';
 
 class OutPutPage extends StatefulWidget {
-  const OutPutPage({super.key});
+  const OutPutPage({super.key, required this.result,required this.icon,});
+
+  final Map<String, dynamic> result;
+  final String icon;
+  
 
   @override
   State<OutPutPage> createState() => _OutPutPageState();
@@ -29,11 +34,11 @@ class _OutPutPageState extends State<OutPutPage> {
           Container(
             width: sizeW / 0.9825,
             height: sizeH / 2.5,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+            decoration:  BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
                 image: DecorationImage(
-                    image: AssetImage(
-                      Paths.imgGrayWolfResult,
+                    image: NetworkImage(
+                      widget.icon,
                     ),
                     fit: BoxFit.cover)),
           ),
@@ -42,119 +47,10 @@ class _OutPutPageState extends State<OutPutPage> {
             child: Padding(
               padding: EdgeInsets.fromLTRB(
                   sizeW / 6.894736842, sizeH / 18.52173913, 0, 0),
-              child: SizedBox(
-                width: sizeW / 3,
-                height: sizeH / 4,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(bottom: sizeH / 85.2),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "X:",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "319",
-                            style: TextStyle(fontSize: 23),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: sizeH / 85.2),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Y:",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "4",
-                            style: TextStyle(fontSize: 23),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: sizeH / 85.2),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Z:",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "4",
-                            style: TextStyle(fontSize: 23),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: sizeH / 85.2),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "ANAR:",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "-103",
-                            style: TextStyle(fontSize: 23),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(bottom: sizeH / 85.2),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "TIME:",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "5.36",
-                            style: TextStyle(fontSize: 23),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text("s",
-                              style: TextStyle(
-                                  fontSize: 23, fontWeight: FontWeight.w600)),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+              child: Text(
+                '${widget.result.keys}=${widget.result.values}',
+                style: const TextStyle(
+                    fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -164,12 +60,15 @@ class _OutPutPageState extends State<OutPutPage> {
               padding:
                   EdgeInsets.fromLTRB(0, sizeH / 17.04, sizeW / 10.9166, 0),
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );},
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(
                       sizeW / 17, sizeH / 200, sizeW / 17, sizeH / 200),
                   child: const Text(
-                    "Share",
+                    "Back to Home",
                     style: TextStyle(
                       color: Color(
                         0xFF1b211d,

@@ -139,7 +139,7 @@ class AppInfoPage extends StatelessWidget {
               const Expanded(
                 child: Align(alignment: Alignment.bottomCenter,
                   child: Text(
-                    "Made with 💚 by U.D",
+                    "Made with 💚 by U.D.A.P.A",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),

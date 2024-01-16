@@ -2,7 +2,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_data_gen/models/algorithm_model.dart';
-import 'package:test_data_gen/views/pages/appInfo.dart';
+import 'package:test_data_gen/views/pages/app_info.dart';
 import 'package:test_data_gen/views/pages/input_condition.dart';
 import 'package:test_data_gen/views/res/strings.dart';
 import 'package:http/http.dart' as http;
@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  static List <Algorithm> algorithm = [];
+  static List<Algorithm> algorithm = [];
 
   Future getResponse(BuildContext context) async {
     var url = "https://pytestdatagenerator.pythonanywhere.com/algorithm/list";
@@ -119,8 +119,18 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                       context,
                                       CupertinoPageRoute(
-                                        builder: (context) =>
-                                             InputCondition(slug: algorithm[index].slug!),
+                                        builder: (context) => InputCondition(
+                                          slug: algorithm[index].slug!,
+                                          id: algorithm[index].id,
+                                          name: algorithm[index].name!,
+                                          icon: algorithm[index].icon!,
+                                          image: algorithm[index].image!,
+                                          description:
+                                              algorithm[index].description!,
+                                          about: algorithm[index].about!,
+                                          isAllowed:
+                                              algorithm[index].isAllowed!,
+                                        ),
                                       ),
                                     );
                                   },
@@ -193,5 +203,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
 }
